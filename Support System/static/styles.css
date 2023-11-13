@@ -1,0 +1,31 @@
+body {
+    margin: 0; /* Remove default body margin */
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Horizontally center the child elements */
+    align-items: center; /* Vertically center the child elements */
+    padding-left: 40px;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+    padding: 10px;
+}
+
+.alert-counts-table {
+    width: 300px;
+    height: 120px;
+    
+}
+
+.export-button {
+    background-color: blue; /* Set the background color to blue */
+    text-decoration: none; /* Remove the underline */
+    color: white; /* Set the text color to white */
+    padding: 5px 10px; /* Add some padding for a nicer button appearance */
+}
+
+#map { height: 180px; width: 80% }

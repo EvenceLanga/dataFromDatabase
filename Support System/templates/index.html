@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>home</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <div style="padding-left: 200px; margin-bottom: 30px">
+      <h1>All Device Details</h1>
+      <div id="map"></div>
+      <div>
+        <a
+          href="{{ url_for('export_csv', olt_name=olt_name) }}"
+          class="export-button"
+          >Export CSV</a
+        >
+      </div>
+      <div style="padding-left: 750px; margin-bottom: 25px">
+        <a href="javascript:void(0);" onclick="goForward()"
+          ><i class="fas fa-forward"></i
+        ></a>
+        <!-- Next icon -->
+      </div>
+
+      <!-- Display the data here -->
+      {{ data | safe }}
+    </div>
+    <script>
+
+        var map = L.map('map').setView([-30, 25], 5); // Set the initial view to South Africa
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var marker = L.marker([-30, 25]).addTo(map); // Set the marker to South Africa's coordinates
+
+        
+
+      // Function to navigate to a new page when the olt_name column is clicked
+      function navigateToDetail(oltName) {
+        window.location.href = "/detail?olt_name=" + oltName;
+      }
+
+      // Add a click event listener to all cells in the olt_name column
+      const table = document.querySelector(".table");
+      const rows = x.querySelectorAll("tr");
+
+      rows.forEach((row) => {
+        const oltNameCell = row.cells[0]; // Assuming olt_name is in the first column, adjust as needed
+        oltNameCell.addEventListener("click", () => {
+          const oltName = oltNameCell.textContent;
+          navigateToDetail(oltName);
+        });
+      });
+
+      function goForward() {
+        window.history.forward();
+      }
+
+      function zoomToLoc(lat,lon) {
+        l.zoom(lat,lon)
+      }
+    </script>
+  </body>
+</html>

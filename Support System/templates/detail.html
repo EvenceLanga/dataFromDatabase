@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <title>{{ olt_name }}: Device Details</title>
+</head>
+<body>
+    <div class="header"  >
+        <h1>{{ olt_name }}: Device Details</h1>
+        <div style="margin-right: 10px">
+            <a href="{{ url_for('export_alerts_csv', olt_name=olt_name) }}" class="export-button">Export CSV</a>
+        </div>
+        <!-- Icons div -->
+        <div style="padding-left: 300px; margin-bottom: 20px">
+            <a href="javascript:void(0);" onclick="goBack()"><i class="fas fa-backward"></i></a> <!-- Back icon -->
+            <a href="javascript:void(0);" onclick="goForward()"><i class="fas fa-forward"></i></a> <!-- Next icon -->
+        </div>    
+    </div>
+
+    <div class="container">
+        <!-- Table for alert counts -->
+        <div>
+            <table class="alert-counts-table" border="1" style="text-align: center;">
+                <tr>
+                    <th>alert</th>
+                    <th>Totals</th>
+                </tr>
+                {% for alert_count in alert_counts %}
+                    <tr>
+                        <td><a href="{{ url_for('alerts_details', olt_name=olt_name, alerts=alert_count[0]) }}">{{ alert_count[0] }}</a></td>
+                        <td>{{ alert_count[1] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div> 
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    
+        function goForward() {
+            window.history.forward();
+        }
+    </script>
+    
+</body>
+</html>

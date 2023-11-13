@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Alerts details</title>
+    
+</head>
+<body>
+
+    <div style="margin-bottom: 30px;margin-left:20px" >
+        <h1 style="text-align: center">All ONT's that are '{{ alerts }}' at {{ olt_name }}</h1>
+        <div>
+            <div >
+                <a href="{{ url_for('export_alerts_details_csv', olt_name=olt_name, alerts=alerts) }}" class="export-button">Export CSV</a>
+            </div>
+            <div style="padding-left: 1600px; margin-bottom: 25px">
+                <a href="javascript:void(0);" onclick="goBack()"><i class="fas fa-backward"></i></a> <!-- Back icon -->
+                <a href="javascript:void(0);" onclick="goHome()"><i class="fas fa-home"></i></a> <!-- Home icon -->
+            </div>
+            
+            
+            
+        </div>
+        <table border="1" style="width: 3000px" >
+            <tr>
+                
+                <!-- Add headers for the additional columns here -->
+                <th>FSAN</th>
+                <th>Customer</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>TX Light Levels</th>
+                <th>SFP Light Levels</th>
+                <th>RX Light Levels</th>
+                <th>OLT Name</th>
+                <th>ONU Port</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <!-- Add headers for the additional columns here -->
+            </tr>
+            {% for detail in details %}
+                <tr>
+                    
+                    <!-- Add placeholders for the additional columns here -->
+                    <td>{{ detail.fsan }}</td>
+                    <td>{{ detail.customer }}</td>
+                    <td>{{ detail.mobile }}</td>
+                    <td>{{ detail.email }}</td>
+                    <td>{{ detail.address }}</td>
+                    <td>{{ detail.status }}</td>
+                    <td>{{ detail.tx_light_levels }}</td>
+                    <td>{{ detail.sfp_light_levels }}</td>
+                    <td>{{ detail.rx_light_levels }}</td>
+                    <td>{{ detail.olt_name }}</td>
+                    <td>{{ detail.onu_port }}</td>
+                    <td>{{ detail.latitude }}</td>
+                    <td>{{ detail.longitude }}</td>
+                    <!-- Add placeholders for the additional columns here -->
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    
+        function goHome() {
+            window.location.href = "{{ url_for('display_data') }}";
+        }
+    
+    </script>
+</body>
+</html>
