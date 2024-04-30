@@ -40,10 +40,10 @@ def execute_query(connection, query, params=None):
 @app.route('/export_csv')
 def export_csv():
     connection = create_db_connection(
-        host_name='mysql.fttx.io',
-        user_name='eyeseeyou',
-        user_password='Q3D6G6y2xOYIY32o3eYI3oCuheVOQi',
-        db_name='evt_evonne',
+        host_name='#################',
+        user_name='#################',
+        user_password='#################',
+        db_name='##############',
     )
 
     if connection:
@@ -84,10 +84,10 @@ def export_alerts_details_csv(alerts):
 
     if olt_name:
         connection = create_db_connection(
-            host_name='mysql.fttx.io',
-            user_name='eyeseeyou',
-            user_password='Q3D6G6y2xOYIY32o3eYI3oCuheVOQi',
-            db_name='evt_evonne',
+            host_name='###########',
+            user_name='##############',
+            user_password='#################',
+            db_name='###################',
         )
 
         if connection:
@@ -173,10 +173,10 @@ def export_alerts_csv():
 
     if olt_name:
         connection = create_db_connection(
-            host_name='mysql.fttx.io',
-            user_name='eyeseeyou',
-            user_password='Q3D6G6y2xOYIY32o3eYI3oCuheVOQi',
-            db_name='evt_evonne',
+            host_name='###########',
+            user_name='##############',
+            user_password='#################',
+            db_name='###################',
         )
 
         if connection:
@@ -212,12 +212,12 @@ def export_alerts_csv():
 
 @app.route('/')
 def display_data():
-    connection = create_db_connection(
-        host_name='mysql.fttx.io',
-        user_name='eyeseeyou',
-        user_password='Q3D6G6y2xOYIY32o3eYI3oCuheVOQi',
-        db_name='evt_evonne',
-    )
+     connection = create_db_connection(
+            host_name='###########',
+            user_name='##############',
+            user_password='#################',
+            db_name='###################',
+        )
 
     if connection:
         query1 = """
@@ -316,11 +316,11 @@ def olt_detail():
     """
 
     try:
-        connection = create_db_connection(
-            host_name='mysql.fttx.io',
-            user_name='eyeseeyou',
-            user_password='Q3D6G6y2xOYIY32o3eYI3oCuheVOQi',
-            db_name='evt_evonne',
+      connection = create_db_connection(
+            host_name='###########',
+            user_name='##############',
+            user_password='#################',
+            db_name='###################',
         )
 
         cursor = connection.cursor()
@@ -385,10 +385,10 @@ def alerts_details(alerts):
 
     try:
         connection = create_db_connection(
-            host_name='mysql.fttx.io',
-            user_name='eyeseeyou',
-            user_password='Q3D6G6y2xOYIY32o3eYI3oCuheVOQi',
-            db_name='evt_evonne',
+            host_name='###########',
+            user_name='##############',
+            user_password='#################',
+            db_name='###################',
         )
 
         cursor = connection.cursor()
